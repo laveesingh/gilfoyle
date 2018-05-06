@@ -1,14 +1,3 @@
-"
-"   ██╗   ██╗██╗███╗   ███╗██████╗  ██████╗ ██████╗
-"   ██║   ██║██║████╗ ████║██╔══██╗██╔════╝██╔════╝
-"   ██║   ██║██║██╔████╔██║██████╔╝██║     ██║  ███╗
-"   ╚██╗ ██╔╝██║██║╚██╔╝██║██╔══██╗██║     ██║   ██║
-"    ╚████╔╝ ██║██║ ╚═╝ ██║██║  ██║╚██████╗╚██████╔╝
-"     ╚═══╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝
-"
-"   Customizable VimRC Generator: https://vimrc.org
-"   Configuration Generated on: May 04, 2018
-" ---------------------------------------------------
 set nocompatible
 " Variables                      {{{
 " --> define os specific variables
@@ -31,7 +20,6 @@ elseif exists("$TERM")        | let g:ui_type = "TERM"
 else | let g:ui_type = "????" | endif
 
 " }}}
-
 " Plugin Manager                 {{{
 " --> auto-install a plugin manager for VIM, if not found
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -67,7 +55,7 @@ set noautowrite                   " do not auto write file when moving away from
 set nofsync                       " allows OS to decide when to flush to disk
 
 " --> scroll text automatically when cursor is near edges
-set scrolloff=7                 " keep lines off edges of the screen when scrolling
+set scrolloff=5                 " keep lines off edges of the screen when scrolling
 set sidescroll=1                " brings characters in view when side scrolling
 set sidescrolloff=15            " start side-scrolling when n chars are left
 " set scrolljump=5                " lines to scroll when cursor leaves screen
@@ -136,28 +124,9 @@ let maplocalleader = "\\"    " used inside filetype settings
 " pressing `Shift` key each time that slows almost all commands we use.
 nnoremap ; :
 
-" --> swap implementations of ` and ' jump to markers
-nnoremap ' `
-nnoremap ` '
-
 " --> swap implementations of 0 and ^
 nnoremap 0 ^
 nnoremap ^ 0
-
-" }}}
-
-" Spell                          {{{
-" --> disable spell check by default
-if has('spell') | set nospell | endif
-
-" --> use default word list provided by the OS
-if has('spell')
-  set dictionary=/usr/share/dict/words
-  set spellfile=~/.vim/spell/public.utf-8.add,~/.vim/spell/private.utf-8.add
-endif
-
-" --> manually added words are sent to `private` dictionary
-if has('spell') | nnoremap zG 2zg | endif
 
 " }}}
 
@@ -168,33 +137,6 @@ if &term =~# '^screen'
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
 
-" --> provide some beautiful colorschemes for the editor
-Plug 'dracula/vim'
-Plug 'morhetz/gruvbox'
-Plug 'trevordmiller/nova-vim'
-Plug '29decibel/codeschool-vim-theme'
-Plug 'sonph/onehalf', {'rtp': 'vim/'}
-Plug 'altercation/vim-colors-solarized'
-
-" }}}
-
-" Colorschemes                   {{{
-" --> provide more colorschemes for the editor
-Plug 'ciaranm/inkpot'
-Plug 'DAddYE/soda.vim'
-Plug 'Pychimp/vim-luna'
-Plug 'fugalh/desert.vim'
-Plug 'nanotech/jellybeans.vim'
-Plug 'jnurmine/Zenburn'
-Plug 'minofare/VIM-Railscasts-Color-Theme'
-Plug 'flazz/vim-colorschemes'
-" Plug 'wombat256.vim'
-" Plug 'cstrahan/grb256'
-" Plug 'chriskempson/base16-vim'
-" Plug 'chriskempson/vim-tomorrow-theme'
-" Plug 'daylerees/colour-schemes', { 'rtp': 'vim-themes/' }
-
-" }}}
 
 " Editor                         {{{
 " --> allow cursor 1 char beyond end of current line
@@ -229,6 +171,7 @@ set list                        " show invisible characters like spaces
                                 " enabled later via autocmd on certain filetypes
 set listchars=tab:▸\ ,trail:·,extends:❯,precedes:❮,nbsp:·
 
+
 " --> provide movement around surroundings of text object
 Plug 'tpope/vim-surround'
 
@@ -236,12 +179,17 @@ Plug 'tpope/vim-surround'
 Plug 'Lokaltog/vim-easymotion'
 
 " --> allow creation of our own text objects, and add some useful ones
-Plug 'kana/vim-textobj-user'
-Plug 'austintaylor/vim-indentobject'      " indentations: i
-Plug 'coderifous/textobj-word-column.vim' " vertical columns by word boundary: c
-Plug 'kana/vim-textobj-fold'              " foldings: z
+"Plug 'kana/vim-textobj-user'
+"Plug 'austintaylor/vim-indentobject'      " indentations: i
+"Plug 'coderifous/textobj-word-column.vim' " vertical columns by word boundary: c
+"Plug 'kana/vim-textobj-fold'              " foldings: z
 
 " }}}
+
+" ========================================================================
+" DONE TILL HERE
+" ========================================================================
+
 
 " Diff                           {{{
 " --> ignore whitespace in diff mode (focus on code changes only)
@@ -281,11 +229,6 @@ endif
 
 " --> enable use of multiple cursors for quick editing
 Plug 'terryma/vim-multiple-cursors'
-let g:multi_cursor_use_default_mapping = 0
-let g:multi_cursor_next_key='<F3>'
-let g:multi_cursor_prev_key=''
-let g:multi_cursor_skip_key=''
-let g:multi_cursor_quit_key='<Esc>'
 
 " }}}
 
@@ -1865,24 +1808,6 @@ call plug#end()
 " --> Personalize: allows customizations via a local configuration
 if filereadable(expand("~/.vimrc.local")) | source ~/.vimrc.local | endif
 
-" air-line
-"let g:airline_powerline_fonts = 1
-
-"if !exists('g:airline_symbols')
-    "let g:airline_symbols = {}
-"endif
-
-"" unicode symbols
-"let g:airline_left_sep = '▶'
-"let g:airline_right_sep = '◀'
-"let g:airline_symbols.linenr = '␊'
-"let g:airline_symbols.linenr = '␤'
-"let g:airline_symbols.linenr = '¶'
-"let g:airline_symbols.branch = '⎇'
-"let g:airline_symbols.paste = 'ρ'
-"let g:airline_symbols.paste = 'Þ'
-"let g:airline_symbols.paste = '∥'
-"let g:airline_symbols.whitespace = 'Ξ'
 
 
 " Manual customizations
