@@ -1097,11 +1097,11 @@ let g:investigate_use_dash=1
 augroup jobs_and_tasks | au! | augroup end
 
 " --> start builds, test suites and linting in the background (async)
-Plug 'neomake/neomake'
-let g:neomake_open_list = 2
-autocmd! BufWritePost * Neomake
-Plug 'tpope/vim-dispatch'
-nnoremap <F5> <silent> :Dispatch!<CR>
+"Plug 'neomake/neomake'
+"let g:neomake_open_list = 2
+"autocmd! BufWritePost * Neomake
+"Plug 'tpope/vim-dispatch'
+"nnoremap <F5> <silent> :Dispatch!<CR>
 
 " --> auto format code whenever it is written
 Plug 'Chiel92/vim-autoformat'
@@ -1253,6 +1253,11 @@ Plug 'kchmck/vim-coffee-script'       " Coffeescript
 Plug 'itspriddle/vim-jquery'          " jQuery
 Plug 'mmalecki/vim-node.js'           " Node.js
 
+Plug 'w0rp/ale'
+let g:ale_sign_error = '●' " Less aggressive than the default '>>'
+let g:ale_sign_warning = '.'
+let g:ale_lint_on_enter = 0 " Less distracting when opening a new file
+
 " --> detect correct file types and syntax for JS related extensions
 augroup detect_filetypes
   au BufNewFile,BufRead *.json setl ft=json
@@ -1315,6 +1320,12 @@ Plug 'mustache/vim-mustache-handlebars' " mustache and handlebars
 "     try typing: html:5<C-y>,p#active>span.text-hidden*5<C-y>,
 Plug 'mattn/emmet-vim'
 " plugin mappings: <C-y>,
+let g:user_emmet_leader_key='<Tab>'
+let g:user_emmet_settings = {
+  \  'javascript.jsx' : {
+    \      'extends' : 'jsx',
+    \  },
+  \}
 
 " --> provide mappings to escape/unescape HTML
 Plug 'skwp/vim-html-escape'
@@ -1802,6 +1813,7 @@ endif
 Plug 'scrooloose/nerdcommenter'
 Plug 'SirVer/ultisnips'
 Plug 'junegunn/fzf'
+Plug 'tell-k/vim-autopep8'
 
 call plug#end()
 "colorscheme nova
