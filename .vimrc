@@ -1814,6 +1814,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'SirVer/ultisnips'
 Plug 'junegunn/fzf'
 Plug 'tell-k/vim-autopep8'
+Plug 'wakatime/vim-wakatime'
 
 call plug#end()
 "colorscheme nova
