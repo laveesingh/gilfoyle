@@ -129,6 +129,11 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 
+#########################################################################
+# Alias: Start
+#########################################################################
+
+# docker related
 alias dcr='docker-compose restart'
 alias dcu='docker-compose up'
 alias dsa='docker stop $( docker ps | cut -f 1 -d " " | grep -v "CONTAINER" )'  # docker stop all running containers
@@ -136,10 +141,17 @@ alias dm='./d ./manage.py'
 alias dapi='dm shell'
 alias ddb='docker exec -it mysql mysql tripguru'
 
+# git related
+alias git_alias='git config --get-regexp alias'  # list git aliases
+
+#########################################################################
+# Alias: Start
+#########################################################################
+
 # adds alias to change commits, for more see: https://stackoverflow.com/questions/2919878/git-rewrite-previous-commit-usernames-and-emails/11768843#11768843
 # git config --global alias.change-commits '!'"f() { VAR=\$1; OLD=\$2; NEW=\$3; shift 3; git filter-branch --env-filter \"if [[ \\\"\$\`echo \$VAR\`\\\" = '\$OLD' ]]; then export \$VAR='\$NEW'; fi\" \$@; }; f"
 
-# ssh related utilities
+# ssh related
 alias ssht='ssh -i ~/.ssh/tripguru_aws.pem'
 alias sbastion='ssh -i ~/.ssh/tripguru_aws.pem ubuntu@54.254.153.64'
 alias sbastion2='ssh -i ~/.ssh/tripguru_aws.pem ubuntu@18.140.198.98'
@@ -149,5 +161,4 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # for pub installations
 export PATH="$PATH":"$HOME/.pub-cache/bin"
-
 
