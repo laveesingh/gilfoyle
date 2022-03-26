@@ -27,7 +27,7 @@ ZSH_THEME="robbyrussell"
 # DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
+DISABLE_UPDATE_PROMPT="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
@@ -141,6 +141,7 @@ alias dm='./d ./manage.py'
 alias dapi='dm shell'
 alias ddb='docker exec -it mysql bash'
 alias ddbs='docker exec -it mysql mysql tripguru'
+alias show_unapplied_migrations='dm showmigrations | grep "\[ \]"'
 
 # git related
 alias git_alias='git config --get-regexp alias'  # list git aliases
